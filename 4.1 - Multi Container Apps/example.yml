@@ -1,0 +1,37 @@
+# Definir la versión del docker compose
+version: '3'
+
+services:
+
+  #Nombre del servicio
+  anylistapp:
+
+  #Depende de otro servicio
+    depends_on:
+    - db
+
+    #Construcción de imagen
+    build:
+
+      #Path del dockerfile(./path/)
+      context: .
+      dockerfile: Dockerfile
+
+    #Nombre de la imagen a usar
+    image: node:18-apine
+
+    #Ejecutar un comando shell dentro
+    command: sh -c "yarn instal && yarn run dev"
+
+    #Directorio de trabajo dentro del contenedor
+    working_dir: /app
+
+    #Nombre del contenedor
+    container_name: anylistapp
+
+    # Reiniciar siempre el contenedor
+    restart: always
+    
+    #Puertos: MIEQUIPO : CONTENEDOR
+    ports:
+      - 8080:3000
