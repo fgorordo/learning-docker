@@ -1,3 +1,5 @@
 /*/pgadmin
 /*/postgresdb
 /*/node_modules
+.DS_STORE
+.dockerignore
